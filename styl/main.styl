@@ -1,0 +1,203 @@
+@import 'nib'
+@require 'mixin'
+@require '__variables'
+@require 'reset'
+
+global-reset()
+
+//universal-----------------------------------
+.navbar-brand
+  font 24px/45px $font-prox-800
+  color $col-white
+  &:hover
+    color $col-orangehover
+.navbar-toggle
+  border 2px solid $col-white
+  margin-top 20px
+  > .icon-bar
+    background $col-orangehover
+.text-primehead
+  font 700 48px/51px $font-nexa
+  color $col-black-11
+  max-width 768px
+  margin auto
+.text-postdate, .person-prof
+  font 600 14px/50px $font-prox-600
+  color $col-black-77
+.reply-link
+  @extend .text-postdate
+  font-size 16px
+  &:hover
+    color $col-orangehover
+  > span
+    margin-right 4px
+.text-desc
+  font 400 16px/20px $font-prox-400
+  color $col-black-11
+  h2&,h3&,h4&,h5&,h6&
+    font 600 28px $font-prox-600
+.text-foot-menu
+  font 600 14px $font-prox-600
+  color $col-black-55
+  a&:hover
+    color $col-orangehover
+.btn-more
+  background $col-white
+  border none
+  font 600 16px/22px $font-prox-600
+  color $col-black-11
+  border-radius 25px
+  > span
+    width 22px
+    height 22px
+    font-size 22px
+    margin-right 8px
+  &:hover
+    color $col-orangehover
+    background lighten($col-orangehover, 92%)
+//header-----------------------------------------
+.prime-header
+  height 80px
+  background $col-black-11
+  nav.navbar-collapse
+    overflow hidden
+  .top-menu
+    padding 16px 0
+    margin-right -30px
+    > li
+      background $col-black-11
+      > a
+        font 700 16px $font-nexa
+        color $col-white
+        letter-spacing .25px
+        @media (min-width 768px) and (max-width 1023px)
+          font-size 14px
+        &:hover
+          color $col-orangehover
+  .home-drop-menu
+    height 62px
+    background $col-lightwhite
+    border 1px solid $col-bordergray
+    ul.row
+      @media (min-width 768px)
+        margin-right 75px
+    li
+      margin 0 15px
+      > a
+        font 700 16px/62px $font-nexa
+        color $col-black-55
+        display block
+        &:hover
+          box-shadow inset 0 -1px 0 $col-black-55
+//main----------------------------------------------
+.content-inner
+  .blogs-container
+    padding 80px 0 50px
+    .blog-section
+      padding 50px 0
+      &:not(:last-of-type)
+        border-bottom 1px solid $col-bordergray
+    .blog-desc
+      > .text-desc:not(:last-child)
+        margin-bottom 30px
+    .blog-img
+      padding 40px 0
+    button
+      margin-top 25px
+  .share-sc
+    > h6
+      font-size 16px
+      margin-bottom 10px
+    >ul
+      a
+        display flex
+        height 25px
+        align-items center
+        color $col-black-11
+        margin-right 15px
+        > span.fa
+          font-size 20px
+          margin-right 15px
+        > span.val-counter
+          position relative
+          background $col-black-11
+          color $col-white
+          border-radius 4px
+          line-height 16px
+          font-size 11px
+          width 40px
+          &:hover
+            color $col-orangehover
+          &:before
+            content ""
+            display block
+            position absolute
+            left: -11px;
+            top: 3px;
+            border 5px solid transparent
+            border-right 8px solid $col-black-11
+  .comments-block
+    border-top 1px solid $col-bordergray
+    margin-bottom 20px
+    > h4
+      margin 50px 0
+      font-size 34px
+    .comment
+      position relative
+      > *:not(figure)
+        margin-left 95px
+      > .text-postdate
+        line-height 20px
+        margin-bottom 15px
+      > .round-avatar
+        position absolute
+        top 0
+        left 0
+        > img
+          border-radius 50%
+      > .commenter-name
+        font-size 24px
+        line-height 50px
+      for rep in 1..5
+        &.reply-{rep - 1}
+          margin-left 9.916% * (rep - 1)
+  .newcomment-block
+    margin-bottom 60px
+    > h4
+      margin 50px 0
+      font-size 34px
+  .new-comment-form
+    > h6
+      font-size 18px
+      line-height 30px
+    > input
+      margin-bottom 10px
+      width 285px
+      height 37px
+    >input, >textarea
+      background $col-white
+      border 1px solid $col-bordergray
+      border-radius 2px
+  .person-team
+    max-width 240px
+    margin 0 auto 60px
+    > h6
+      font-size 18px
+    > figure
+      margin-bottom 30px
+      > img
+        border-radius 50%
+    > .person-prof
+      line-height 30px
+      margin-bottom 15px
+//footer----------------------------------------------
+.prime-footer
+  .foot-inn
+    border-top 1px solid $col-bordergray
+    height 70px
+  .foot-menu
+    > li:not(:last-of-type)
+      margin-right 30px
+//special
+.about .blog-section h2
+  margin-bottom 55px
