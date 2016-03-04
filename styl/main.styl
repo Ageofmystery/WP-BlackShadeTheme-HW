@@ -21,6 +21,10 @@ global-reset()
   color $col-black-11
   max-width 768px
   margin auto
+  & > a
+    color $col-black-11
+    &:hover
+      color $col-orangehover
 .text-postdate, .person-prof
   font 600 14px/50px $font-prox-600
   color $col-black-77
@@ -43,7 +47,7 @@ global-reset()
     color $col-orangehover
 .btn-more
   background $col-white
-  border none
+  display inline-block
   font 600 16px/22px $font-prox-600
   color $col-black-11
   border-radius 25px
@@ -54,7 +58,6 @@ global-reset()
     margin-right 8px
   &:hover
     color $col-orangehover
-    background lighten($col-orangehover, 92%)
 //header-----------------------------------------
 .prime-header
   height 80px
@@ -78,6 +81,7 @@ global-reset()
     height 62px
     background $col-lightwhite
     border 1px solid $col-bordergray
+    transition all 1s ease
     ul.row
       @media (min-width 768px)
         margin-right 75px
@@ -102,7 +106,7 @@ global-reset()
         margin-bottom 30px
     .blog-img
       padding 40px 0
-    button
+    a.btn-more
       margin-top 25px
   .share-sc
     > h6
@@ -195,9 +199,22 @@ global-reset()
   .foot-inn
     border-top 1px solid $col-bordergray
     height 70px
+    width 100%
   .foot-menu
     > li:not(:last-of-type)
       margin-right 30px
 //special
 .about .blog-section h2
   margin-bottom 55px
+#top-menu-up
+  position absolute
+  top 12px
+  right 130px
+.unvis
+  transform translateY(-70px)
+  opacity 0
+  visibility hidden
+.vis
+  transform translateY(0px)
+  opacity 1
+  visibility visible
