@@ -12,7 +12,7 @@
                                     href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                             <p class="text-postdate text-center">Posted on <?php echo get_the_time('F j, Y'); ?></p>
                             <figure class="blog-img">
-                                <?php the_post_thumbnail('mini-thumb'); ?>
+                                <?php the_post_thumbnail(); ?>
                             </figure>
                         </div>
                         <div class="blog-desc text-justify"><?php the_excerpt(); ?></div>
@@ -23,12 +23,6 @@
             else :
                 echo '<p class="text-center text-desc">Empty</p>';
             endif; ?>
-            <?php $args = array(
-                'end_size'     => 5,
-                'prev_text'    => __('<span class="fa fa-chevron-left"></span>'),
-                'next_text'    => __('<span class="fa fa-chevron-right"></span>'),
-            );
-            the_posts_pagination($args); ?>
         </section>
     </div>
 </main>

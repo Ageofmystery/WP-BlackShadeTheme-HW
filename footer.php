@@ -8,12 +8,7 @@
 			'menu_class' 	=> 'foot-menu row',
 			);
 			wp_nav_menu($menuArguments); ?>
-			<ul class="sc-block row">
-				<li><a href="#">2</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">2</a></li>
-			</ul>
+			<?php dynamic_sidebar( 'widget-zone' ); ?>
 			<address class="copy-about text-foot-menu">&copy; Copyright <?php echo date('Y');?> DesignerFirst.com</address>
 		</div>
 	</div>

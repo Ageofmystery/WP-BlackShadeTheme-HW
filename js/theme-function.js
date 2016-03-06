@@ -5,6 +5,14 @@ jQuery(function ($) {
         $(this).children('p, h3').addClass('text-desc');
         $(this).children('p').has('img') ? $(this).find('img').parent().addClass('text-center blog-img') : false;
     });
+    $('.comment .text-postdate').siblings('p').addClass('text-desc');
+
+    $("#new-message").on('keypress', function (key) {
+        if(key.keyCode == 13) {
+            $('#submit').trigger('click');
+            return true;
+        }
+    });
 
     var $window = $(window);
     $window.on('resize load', function () {
@@ -27,4 +35,11 @@ jQuery(function ($) {
         return false;
     });
 
+    var counterArray = [0, 0, 0];
+    $('.share-list li > a').on('click', function(event){
+        event.preventDefault();
+        counterArray[$(this).parent('li').index()] += 1;
+        $(this).children('span.val-counter').html(counterArray[$(this).parent('li').index()]);
+        return false;
+    });
 });

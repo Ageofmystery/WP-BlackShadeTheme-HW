@@ -15,6 +15,7 @@ add_action('wp_enqueue_scripts', 'loadResources');
 
 //enable img-thumb
 if (function_exists('add_theme_support')) add_theme_support('post-thumbnails');
+add_image_size( 'mini-thumb', 720, 500, true );
 
 //register menus
 register_nav_menus([
@@ -31,3 +32,31 @@ add_filter('excerpt_length', 'new_excerpt_length');
 add_filter('excerpt_more', function($more) {
 	return '...';
 });
+
+//widget social ico
+register_sidebar([
+	'id' => 'widget-zone',
+	'name' => 'Зона соц. иконок',
+	'description' => 'Иконки фонтавесоме',
+	'class' => '',
+	'before_widget' => '<div class="sc-block">',
+	'after_widget' => "</div>\n",
+]);
+
+//reorder formsubmit
+function reorderFormFields( $fields ){
+	$new_fields = array();
+	$myorder = array('author','email','comment');
+	foreach( $myorder as $key ){
+		$new_fields[ $key ] = $fields[ $key ];
+		unset( $fields[ $key ] );
+	}
+	return $new_fields;
+}
+add_filter('comment_form_fields', 'reorderFormFields' );
+
+//pagination changes
+function my_navigation_template( $template, $class ){
+	return '<nav class="navigation row center-xs %1$s" role="navigation"><div class="nav-links">%3$s</div></nav>';
+}
+add_filter('navigation_markup_template', 'my_navigation_template', 10, 2 );

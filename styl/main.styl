@@ -9,7 +9,7 @@ global-reset()
 .navbar-brand
   font 24px/45px $font-prox-800
   color $col-white
-  &:hover
+  &:hover,&:focus
     color $col-orangehover
 .navbar-toggle
   border 2px solid $col-white
@@ -23,18 +23,22 @@ global-reset()
   margin auto
   & > a
     color $col-black-11
-    &:hover
+    &:hover,&:focus
       color $col-orangehover
 .text-postdate, .person-prof
   font 600 14px/50px $font-prox-600
   color $col-black-77
-.reply-link
+.comment-reply-link,#cancel-comment-reply-link
   @extend .text-postdate
   font-size 16px
-  &:hover
+  &:hover,&:focus
     color $col-orangehover
   > span
     margin-right 4px
+  &:before
+    content "\f112"
+    font normal normal normal 14px/1 FontAwesome
+    margin-right 5px
 .text-desc
   font 400 16px/20px $font-prox-400
   color $col-black-11
@@ -56,7 +60,7 @@ global-reset()
     height 22px
     font-size 22px
     margin-right 8px
-  &:hover
+  &:hover,&:focus
     color $col-orangehover
 //header-----------------------------------------
 .prime-header
@@ -80,7 +84,7 @@ global-reset()
   .home-drop-menu
     height 62px
     background $col-lightwhite
-    border 1px solid $col-bordergray
+    border-bottom  1px solid $col-bordergray
     transition all 1s ease
     ul.row
       @media (min-width 768px)
@@ -106,6 +110,9 @@ global-reset()
         margin-bottom 30px
     .blog-img
       padding 40px 0
+      > img
+        max-width 720px
+        max-height 500px
     a.btn-more
       margin-top 25px
   .share-sc
@@ -148,7 +155,7 @@ global-reset()
       font-size 34px
     .comment
       position relative
-      > *:not(figure)
+      > h6,>p,>a
         margin-left 95px
       > .text-postdate
         line-height 20px
@@ -162,9 +169,9 @@ global-reset()
       > .commenter-name
         font-size 24px
         line-height 50px
-      for rep in 1..5
-        &.reply-{rep - 1}
-          margin-left 9.916% * (rep - 1)
+      for rep in 2..5
+        &.depth-{rep}
+          margin-left 9.916%
   .newcomment-block
     margin-bottom 60px
     > h4
@@ -174,14 +181,18 @@ global-reset()
     > h6
       font-size 18px
       line-height 30px
-    > input
-      margin-bottom 10px
-      width 285px
-      height 37px
+      > label
+        display block
+      > input
+        margin-bottom 10px
+        width 285px
+        height 37px
     >input, >textarea
       background $col-white
       border 1px solid $col-bordergray
       border-radius 2px
+    input[type="submit"]
+      display none
   .person-team
     max-width 240px
     margin 0 auto 60px
@@ -194,6 +205,22 @@ global-reset()
     > .person-prof
       line-height 30px
       margin-bottom 15px
+  .nav-links
+    > .page-numbers
+      font 600 16px/28px $font-prox-600
+      color $col-black-11
+      &.current
+        color $col-orangehover
+    > *:not(:last-child)
+      margin-right 25px
+    > .page-numbers.next, > .page-numbers.prev
+      display: inline-block;
+      height: 28px;
+      width: 28px;
+      background: $col-black-11 !important;
+      color: $col-white
+      font-size: 20px;
+      line-height: 28px;
 //footer----------------------------------------------
 .prime-footer
   .foot-inn
@@ -203,6 +230,10 @@ global-reset()
   .foot-menu
     > li:not(:last-of-type)
       margin-right 30px
+  .sc-block
+    a
+      border-radius 50% !important
+      font-size 20px !important
 //special
 .about .blog-section h2
   margin-bottom 55px

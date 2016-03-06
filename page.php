@@ -8,14 +8,13 @@
                     the_post(); ?>
                     <article class="blog-section">
                         <div class="text-center">
-                            <h2 class="text-primehead text-center"><a
-                                    href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                            <h2 class="text-primehead text-center"><?php the_title(); ?></h2>
                             <p class="text-postdate text-center">Posted on <?php echo get_the_time('F j, Y'); ?></p>
                             <figure class="blog-img">
-                                <?php the_post_thumbnail('mini-thumb'); ?>
+                                <?php the_post_thumbnail(); ?>
                             </figure>
                         </div>
-                        <div class="blog-desc text-justify"><?php the_excerpt(); ?></div>
+                        <div class="blog-desc text-justify"><?php the_content(); ?></div>
                         <a class="btn-more" href="<?php the_permalink(); ?>"><span
                                 class="fa fa-arrow-circle-o-right"></span>Read More</a>
                     </article>
@@ -34,3 +33,4 @@
 </main>
 
 <?php get_footer(); ?>
+
