@@ -8,7 +8,7 @@
 			'menu_class' 	=> 'foot-menu row',
 			);
 			wp_nav_menu($menuArguments); ?>
-			<?php dynamic_sidebar( 'widget-zone' ); ?>
+			<?php dynamic_sidebar( 'widget-zone-footer' ); ?>
 			<address class="copy-about text-foot-menu">&copy; Copyright <?php echo date('Y');?> DesignerFirst.com</address>
 		</div>
 	</div>

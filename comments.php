@@ -12,7 +12,7 @@
 		<p class="text-postdate"><?php printf( '%1$s &mdash; %2$s', get_comment_date('F j, Y'),  get_comment_time('g:i A')) ?></p>
 
 		<?php if ($comment->comment_approved == '0') : ?>
-			<p class="text-desc">Ваш комментарий ожидает проверки.</p>
+			<p class="text-desc">Your comment are checking..</p>
 		<?php endif; ?>
 
 		<?php comment_text() ?>

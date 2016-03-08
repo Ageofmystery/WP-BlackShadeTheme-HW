@@ -33,10 +33,20 @@ add_filter('excerpt_more', function($more) {
 	return '...';
 });
 
-//widget social ico
+//widget footer-social
 register_sidebar([
-	'id' => 'widget-zone',
+	'id' => 'widget-zone-footer',
 	'name' => 'Зона соц. иконок',
+	'description' => 'Иконки фонтавесоме',
+	'class' => '',
+	'before_widget' => '<div class="sc-block">',
+	'after_widget' => "</div>\n",
+]);
+
+//widget content-share
+register_sidebar([
+	'id' => 'widget-count-shares',
+	'name' => 'Share counter',
 	'description' => 'Иконки фонтавесоме',
 	'class' => '',
 	'before_widget' => '<div class="sc-block">',
@@ -60,3 +70,32 @@ function my_navigation_template( $template, $class ){
 	return '<nav class="navigation row center-xs %1$s" role="navigation"><div class="nav-links">%3$s</div></nav>';
 }
 add_filter('navigation_markup_template', 'my_navigation_template', 10, 2 );
+
+//workers post-type
+function workers_info() {
+	$args = array(
+		'label' => 'Team',
+		'singular_label' => 'Team worker',
+		'public' => true,
+		'show_ui' => true,
+		'supports' => array( 'thumbnail', 'title', 'custom-fields', 'editor')
+	);
+	register_post_type( 'team' , $args ); }
+add_action('init', 'workers_info');
+
+//add category class in single-post
+function addCatClassInSinglePost($output) {
+	global $post;
+	if (is_single()) :
+		$categories = wp_get_post_categories($post->ID);
+		if ($categories) {
+			foreach ($categories as $value) {
+				if (preg_match('#item-' . $value . '">#', $output)) {
+					$output = str_replace('item-' . $value . '">', 'item-' . $value . ' current-cat">', $output);
+				}
+			}
+		}
+	endif;
+	return $output;
+}
+add_filter('wp_list_categories','addCatClassInSinglePost');

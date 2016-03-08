@@ -33,13 +33,15 @@
             wp_nav_menu($menuArguments); ?>
         </div>
         <nav class="home-drop-menu unvis">
-            <?php
-            $menuArguments = array(
-                'theme_location' => 'secondary',
-                'container'       => 'div',
-                'container_class' => 'container',
-                'menu_class' 	=> 'row end-sm center-xs',
-            );
-            wp_nav_menu($menuArguments); ?>
+            <div class="container">
+                <ul class="row center-xs end-sm">
+                    <?php $args = array(
+                        'style'              => 'list',
+                        'title_li'           => '',
+                        'taxonomy'           => 'category',
+                    );
+                    wp_list_categories( $args ); ?>
+                </ul>
+            </div>
         </nav>
     </header>

@@ -19,11 +19,7 @@
             <?php }; endif; ?>
             <div class="text-center share-sc">
                 <h6 class="text-desc">Share this article...</h6>
-                <ul class="share-list row center-xs">
-                    <li><a class="text-desc" href="#"><span class="fa fa-twitter"></span><span class="val-counter">0</span></a></li>
-                    <li><a class="text-desc" href="#"><span class="fa fa-facebook"></span><span class="val-counter">0</span></a></li>
-                    <li><a class="text-desc" href="#"><span class="fa fa-pinterest-p"></span><span class="val-counter">0</span></a></li>
-                </ul>
+                <?php dynamic_sidebar( 'widget-count-shares' ); ?>
             </div>
         </section>
         <section class="comments-block">
